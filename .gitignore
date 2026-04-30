@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# Vite build output - 不要提交到 main branch；deploy 時由 gh-pages 發布 dist
+/dist/
+/.vite/
+
+# local env
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
