@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <%- include('src/ejs/partials/head.ejs') %>
+  </head>
+  <body class="d-flex flex-column min-vh-100 page-about">
+    <%- include('src/ejs/partials/header.ejs') %>
+
+    <main class="flex-grow-1 py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h1 class="fw-bold mb-3">關於我們 About</h1>
+            <p class="lead text-secondary">
+              這裡可以放品牌介紹、專案背景、團隊理念或網站目的。此頁目前先保留基本 HTML 架構。
+            </p>
+            <div class="alert alert-primary" role="alert">
+              這個頁面載入的是 <code>src/js/pages/about.js</code>，可放 about 頁專屬互動。
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('src/ejs/partials/footer.ejs') %>
+    <script type="module" src="/src/js/pages/about.js"></script>
+  </body>
+</html>

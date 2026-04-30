@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <%- include('src/ejs/partials/head.ejs') %>
+  </head>
+  <body class="d-flex flex-column min-vh-100 page-home">
+    <%- include('src/ejs/partials/header.ejs') %>
+
+    <main class="flex-grow-1">
+      <section class="hero-section py-5 bg-body-tertiary">
+        <div class="container py-lg-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <p class="badge text-bg-primary rounded-pill mb-3">Bootstrap 5.3 + Sass 7-1 + Vite</p>
+              <h1 class="display-5 fw-bold mb-3">首頁 Index</h1>
+              <p class="lead text-secondary mb-4">
+                這是一個多頁面 MPA starter，適合練習 Bootstrap 元件、Sass 客製化、EJS partial 與 GitHub Pages 部署。
+              </p>
+              <a class="btn btn-primary btn-lg" href="./product.html">查看產品服務</a>
+              <a class="btn btn-outline-secondary btn-lg ms-sm-2 mt-2 mt-sm-0" href="./about.html">了解架構</a>
+            </div>
+            <div class="col-lg-5">
+              <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                  <h2 class="h4">本專案包含</h2>
+                  <ul class="list-unstyled mb-0 d-grid gap-2">
+                    <li>✅ 四個 HTML 頁面</li>
+                    <li>✅ EJS 共用 Header / Nav / Footer</li>
+                    <li>✅ SCSS 7-1 架構</li>
+                    <li>✅ 每頁獨立 JavaScript</li>
+                    <li>✅ gh-pages 部署腳本</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('src/ejs/partials/footer.ejs') %>
+    <script type="module" src="/src/js/pages/index.js"></script>
+  </body>
+</html>

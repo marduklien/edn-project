@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "sibiraj-s.vscode-scss-formatter"
+  ]
+}

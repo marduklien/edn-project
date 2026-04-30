@@ -1,0 +1,11 @@
+.site-header {
+  backdrop-filter: saturate(180%) blur(12px);
+
+  .navbar-brand {
+    letter-spacing: -0.03em;
+  }
+
+  .nav-link {
+    font-weight: 600;
+  }
+}

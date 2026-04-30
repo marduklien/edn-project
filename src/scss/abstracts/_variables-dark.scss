@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// Bootstrap dark mode variables 客製化
+// -----------------------------------------------------------------------------
+// 這些變數會在 Bootstrap _variables-dark.scss 前載入。
+// 可用來調整 data-bs-theme="dark" 時的背景、文字、border 等。
+
+$body-bg-dark: #111827;
+$body-color-dark: #f3f4f6;
+$body-secondary-color-dark: rgba($body-color-dark, .72);
+$body-tertiary-bg-dark: #1f2937;
+$border-color-dark: #374151;
+$link-color-dark: #ff8a8d;
+$link-hover-color-dark: lighten($link-color-dark, 6%);

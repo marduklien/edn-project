@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------------
+// Bootstrap variables 客製化
+// -----------------------------------------------------------------------------
+// 這些變數會在 Bootstrap _variables.scss 前載入。
+// Bootstrap 變數多數都有 !default，因此在這裡先定義即可覆蓋。
+
+$primary: #b60005;
+$secondary: #5f6368;
+$success: #168a55;
+$info: #0b7285;
+$warning: #f59f00;
+$danger: #d6336c;
+$light: #f8f9fa;
+$dark: #1f2937;
+
+$font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$body-bg: #ffffff;
+$body-color: #212529;
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+$border-radius: .75rem;
+$border-radius-sm: .5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+$border-radius-xxl: 1.5rem;
+
+$btn-border-radius: .75rem;
+$btn-padding-y: .625rem;
+$btn-padding-x: 1rem;
+
+$card-border-radius: 1.25rem;
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.25rem;

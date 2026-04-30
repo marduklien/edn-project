@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------------
+// EDN Project - Sass 7-1 Entry
+// -----------------------------------------------------------------------------
+// 為了配合 Bootstrap 5.3.x，這裡先使用 @import。
+// package.json 已鎖定 sass@1.77.6，以避免新版 Dart Sass 對 Bootstrap 產生大量 deprecation warnings。
+
+// 1. Abstracts: 自訂變數必須在 Bootstrap variables 前載入
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/variables-dark';
+
+// 2. Vendors: Bootstrap 完整 Sass 匯入
+// 練習階段先完整引入；正式產品可改為只引入需要的元件，以減少 CSS 體積。
+@import 'vendors/bootstrap';
+
+// 3. Base
+@import 'base/reset';
+@import 'base/typography';
+
+// 4. Layout
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+
+// 5. Components
+@import 'components/buttons';
+@import 'components/cards';
+
+// 6. Pages
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/product';
+@import 'pages/contact';
+
+// 7. Themes
+@import 'themes/default';
+@import 'themes/dark';
