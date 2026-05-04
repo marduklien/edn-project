@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
-  <head>
-    <%- include('src/ejs/partials/head.ejs') %>
-  </head>
-  <body class="d-flex flex-column min-vh-100 page-home">
-    <%- include('src/ejs/partials/header.ejs') %>
+
+<head>
+  <%- include('src/ejs/partials/head.ejs') %>
+</head>
+
+<body class="d-flex flex-column min-vh-100 page-home">
+  <%- include('src/ejs/partials/header.ejs') %>
 
     <main class="flex-grow-1">
       <section class="hero-section py-5 bg-body-tertiary">
@@ -13,6 +15,7 @@
             <div class="col-lg-7">
               <p class="badge text-bg-primary rounded-pill mb-3">Bootstrap 5.3 + Sass 7-1 + Vite</p>
               <h1 class="display-5 fw-bold mb-3">首頁 Index</h1>
+              <img src="<%= base %>assets/images/kv.png" alt="KV" class="img-fluid">
               <p class="lead text-secondary mb-4">
                 這是一個多頁面 MPA starter，適合練習 Bootstrap 元件、Sass 客製化、EJS partial 與 GitHub Pages 部署。
               </p>
@@ -39,6 +42,7 @@
     </main>
 
     <%- include('src/ejs/partials/footer.ejs') %>
-    <script type="module" src="/src/js/pages/index.js"></script>
-  </body>
+      <script type="module" src="/src/js/pages/index.js"></script>
+</body>
+
 </html>

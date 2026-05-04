@@ -43,7 +43,7 @@ const pages = {
   },
 };
 
-function htmlEjsPlugin() {
+function htmlEjsPlugin(base) {
   return {
     name: 'edn-html-ejs-transform',
     transformIndexHtml: {
@@ -53,34 +53,34 @@ function htmlEjsPlugin() {
         const pageKey = path.basename(filename, '.html');
         const page = pages[pageKey] || pages.index;
 
-        return ejs.render(
-          html,
-          {
-            site,
-            page,
-            navItems,
-          },
-          {
-            filename,
-          },
-        );
+        return ejs.render(html, {
+          site,
+          page,
+          navItems,
+          base,        // ✅ 加入 base，模板裡就能用 <%= base %>
+          filename,
+        });
       },
     },
   };
 }
 
-export default defineConfig(({ command }) => ({
-  // GitHub Pages 專案頁需要 /repo-name/；本機開發維持 /
-  base: command === 'build' ? `/${repoName}/` : '/',
-  plugins: [htmlEjsPlugin()],
-  build: {
-    rollupOptions: {
-      input: {
-        index: path.resolve(__dirname, 'index.html'),
-        about: path.resolve(__dirname, 'about.html'),
-        product: path.resolve(__dirname, 'product.html'),
-        contact: path.resolve(__dirname, 'contact.html'),
+export default defineConfig(({ command }) => {
+  // ✅ 先宣告 base 變數，再傳給 plugin 和 defineConfig
+  const base = command === 'build' ? `/${repoName}/` : '/';
+
+  return {
+    base,
+    plugins: [htmlEjsPlugin(base)],  // ✅ 把 base 傳進 plugin
+    build: {
+      rollupOptions: {
+        input: {
+          index: path.resolve(__dirname, 'index.html'),
+          about: path.resolve(__dirname, 'about.html'),
+          product: path.resolve(__dirname, 'product.html'),
+          contact: path.resolve(__dirname, 'contact.html'),
+        },
       },
     },
-  },
-}));
+  };
+});
