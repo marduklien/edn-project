@@ -7,39 +7,40 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const repoName = 'edn-project';
+const htmlEntries = ['index.html', 'about.html', 'product.html', 'contact.html'];
 
 const site = {
   name: 'EDN Project',
-  description: 'Bootstrap + Sass 7-1 + Vite + EJS 多頁面練習專案',
+  description: 'Bootstrap 5.3 + Sass 7-1 + Vite multi-page starter',
 };
 
 const navItems = [
-  { key: 'index', label: '首頁', href: './index.html' },
-  { key: 'about', label: '關於我們', href: './about.html' },
-  { key: 'product', label: '產品服務', href: './product.html' },
-  { key: 'contact', label: '聯絡我們', href: './contact.html' },
+  { key: 'index', label: 'Home', href: './index.html' },
+  { key: 'about', label: 'About', href: './about.html' },
+  { key: 'product', label: 'Product', href: './product.html' },
+  { key: 'contact', label: 'Contact', href: './contact.html' },
 ];
 
 const pages = {
   index: {
     key: 'index',
-    title: '首頁｜EDN Project',
-    description: 'EDN Project 首頁，Bootstrap Sass 客製化與 Vite MPA 練習。',
+    title: 'Home | EDN Project',
+    description: 'Landing page for the EDN Project Vite multi-page starter.',
   },
   about: {
     key: 'about',
-    title: '關於我們｜EDN Project',
-    description: '認識 EDN Project 的專案目標與前端練習架構。',
+    title: 'About | EDN Project',
+    description: 'About page for the EDN Project Vite multi-page starter.',
   },
   product: {
     key: 'product',
-    title: '產品服務｜EDN Project',
-    description: 'EDN Project 產品服務展示頁。',
+    title: 'Product | EDN Project',
+    description: 'Product page for the EDN Project Vite multi-page starter.',
   },
   contact: {
     key: 'contact',
-    title: '聯絡我們｜EDN Project',
-    description: 'EDN Project 聯絡資訊與表單頁。',
+    title: 'Contact | EDN Project',
+    description: 'Contact page for the EDN Project Vite multi-page starter.',
   },
 };
 
@@ -49,37 +50,42 @@ function htmlEjsPlugin(base) {
     transformIndexHtml: {
       order: 'pre',
       handler(html, ctx) {
-        const filename = ctx.filename || 'index.html';
-        const pageKey = path.basename(filename, '.html');
+        const currentHtml = ctx.filename ? path.basename(ctx.filename) : 'index.html';
+        const pageKey = path.basename(currentHtml, '.html');
         const page = pages[pageKey] || pages.index;
 
-        return ejs.render(html, {
-          site,
-          page,
-          navItems,
-          base,        // ✅ 加入 base，模板裡就能用 <%= base %>
-          filename,
-        });
+        return ejs.render(
+          html,
+          {
+            site,
+            page,
+            navItems,
+            base,
+            currentHtml,
+          },
+          {
+            filename: path.resolve(__dirname, currentHtml),
+            root: __dirname,
+          },
+        );
       },
     },
   };
 }
 
 export default defineConfig(({ command }) => {
-  // ✅ 先宣告 base 變數，再傳給 plugin 和 defineConfig
   const base = command === 'build' ? `/${repoName}/` : '/';
+  const input = Object.fromEntries(
+    htmlEntries.map((entry) => [path.basename(entry, '.html'), entry]),
+  );
 
   return {
+    appType: 'mpa',
     base,
-    plugins: [htmlEjsPlugin(base)],  // ✅ 把 base 傳進 plugin
+    plugins: [htmlEjsPlugin(base)],
     build: {
       rollupOptions: {
-        input: {
-          index: path.resolve(__dirname, 'index.html'),
-          about: path.resolve(__dirname, 'about.html'),
-          product: path.resolve(__dirname, 'product.html'),
-          contact: path.resolve(__dirname, 'contact.html'),
-        },
+        input,
       },
     },
   };
